@@ -25,7 +25,8 @@ class PlanesController < ApplicationController
   end
 
   def destroy
-
+    set_plane
+    @plane.destroy
   end
 
   private

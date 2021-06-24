@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_200756) do
+ActiveRecord::Schema.define(version: 2021_06_24_222025) do
 
   create_table "faults", force: :cascade do |t|
     t.string "system_affected"
@@ -44,8 +44,6 @@ ActiveRecord::Schema.define(version: 2021_06_24_200756) do
   create_table "planes", force: :cascade do |t|
     t.string "make"
     t.string "model"
-    t.integer "years_old"
-    t.integer "flight_cycles"
     t.integer "mechanic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

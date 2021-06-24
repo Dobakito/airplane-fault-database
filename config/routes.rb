@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
-  resources :plane_faults
+  
   resources :faults
-  resources :planes
-  resources :mechanics
+
+  resources :planes do
+    resources :faults, only: [:index, :show]
+  end
+
+  resources :mechanics do
+    resources :faults, only: [:index, :show, :edit, :delete]
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

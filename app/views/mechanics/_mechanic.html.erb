@@ -1,0 +1,13 @@
+<ul>
+  <li> Name: <%=@mechanic.name %></li>
+  <li>Position: <%=@mechanic.position %></li>
+  <li>Years Experience: <%=@mechanic.years_experience %></li>
+    <br>
+</ul>
+<br>
+<ul>
+  <%= @mechanic.planes.each do |plane| %>
+  <li><%="#{plane.make} #{plane.model}%></li>
+  <li><%= link_to  %></li>
+  <%end%>
+</ul>
