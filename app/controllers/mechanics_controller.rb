@@ -14,18 +14,24 @@ class MechanicsController < ApplicationController
   end
 
   def edit
+    set_mechanic
   end
 
   def create
-
+    if (mechanic = Mechanic.create(mechanic_params))
+       session[:user_id] = mechanic.id
+       redirect_to mechanic_path(mechanic)
+     else
+      render 'new'
+    end
   end
 
   def update
-
+    set_mechanic
   end
 
   def destroy
-
+    set_mechanic
   end
 
   private
@@ -38,7 +44,7 @@ class MechanicsController < ApplicationController
       params.require(:mechanic).permit(
         :name
         :email
-        :password
+        :password_digest
         :position
         :years_experience
       )
