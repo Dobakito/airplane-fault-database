@@ -5,8 +5,9 @@ class CreatePlanes < ActiveRecord::Migration[6.1]
       t.string :model
       t.integer :years_old
       t.integer :flight_cycles
-
-      t.timestamps
+      t.belongs_to :mechanic
+      
+      t.timestamps null: false
     end
   end
 end

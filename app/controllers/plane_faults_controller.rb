@@ -1,0 +1,2 @@
+class PlaneFaultsController < ApplicationController
+end

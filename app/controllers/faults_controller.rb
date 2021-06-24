@@ -1,0 +1,2 @@
+class FaultsController < ApplicationController
+end

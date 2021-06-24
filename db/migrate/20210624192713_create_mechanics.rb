@@ -7,7 +7,7 @@ class CreateMechanics < ActiveRecord::Migration[6.1]
       t.string :position
       t.integer :years_experience
 
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
