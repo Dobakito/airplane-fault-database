@@ -13,7 +13,7 @@ class PlanesController < ApplicationController
   end
 
   def edit
-    
+
   end
 
   def create
@@ -35,6 +35,12 @@ class PlanesController < ApplicationController
     end
 
     def plane_params
-      params.fetch(:plane, {})
+      params.require(:plane).permit(
+        :make
+        :model
+        :years_old
+        :flight_cycles
+        :mechanic_id
+      )
     end
 end

@@ -35,6 +35,10 @@ class FaultsController < ApplicationController
   end
 
   def fault_params
-    params.fetch(:fault, {})
+    params.require(:fault).permit(
+      :system_affected
+      :severity
+      :date
+    )
   end
 end

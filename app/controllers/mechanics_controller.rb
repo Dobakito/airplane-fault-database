@@ -35,6 +35,12 @@ class MechanicsController < ApplicationController
     end
 
     def mechanic_params
-      params.fetch(:mechanic, {})
+      params.require(:mechanic).permit(
+        :name
+        :email
+        :password
+        :position
+        :years_experience
+      )
     end
 end
