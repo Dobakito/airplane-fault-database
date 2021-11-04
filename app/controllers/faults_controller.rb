@@ -1,8 +1,12 @@
 class FaultsController < ApplicationController
 
-
   def index
-    @faults = Fault.all
+    if params[:plane_id]
+      @plane = Plane.find(params[:plane_id])
+      @faults = Plane.find(params[:plane_id]).faults
+    else
+      @faults = Fault.all
+    end
   end
 
   def show
@@ -14,19 +18,20 @@ class FaultsController < ApplicationController
   end
 
   def edit
+    set_fault
   end
 
   def create
-
+    fault = Fault.create(fault_params)
+    redirect_to fault_path(fault)
   end
 
   def update
-
+    set_fault
+    @fault.update(fault_params)
+    redirect_to fault_path(@fault)
   end
 
-  def destroy
-
-  end
 
   private
 
@@ -36,9 +41,11 @@ class FaultsController < ApplicationController
 
   def fault_params
     params.require(:fault).permit(
-      :system_affected
-      :severity
-      :date
+      :system_affected,
+      :severity,
+      :date,
+      :description,
+      :resolved
     )
   end
 end

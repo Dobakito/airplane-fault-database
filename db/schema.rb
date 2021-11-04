@@ -10,14 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_222025) do
+ActiveRecord::Schema.define(version: 2021_06_25_233650) do
 
   create_table "faults", force: :cascade do |t|
     t.string "system_affected"
     t.string "severity"
-    t.datetime "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.boolean "resolved"
   end
 
   create_table "mechanics", force: :cascade do |t|
@@ -31,8 +32,6 @@ ActiveRecord::Schema.define(version: 2021_06_24_222025) do
   end
 
   create_table "plane_faults", force: :cascade do |t|
-    t.string "description"
-    t.boolean "resolved"
     t.integer "plane_id"
     t.integer "fault_id"
     t.datetime "created_at", precision: 6, null: false
@@ -47,6 +46,8 @@ ActiveRecord::Schema.define(version: 2021_06_24_222025) do
     t.integer "mechanic_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "flight_cycles"
+    t.integer "years_old"
     t.index ["mechanic_id"], name: "index_planes_on_mechanic_id"
   end
 

@@ -1,0 +1,16 @@
+<h2>Login</h2>
+<br>
+<%= flash[:message] if flash[:message]%>
+<br>
+<%= form_for :mechanic do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <br>
+  <%= f.label :password %>
+  <%= f.password_field :password %>
+  <br>
+  <br>
+  <%= f.submit "Login" %>
+  <%end%>
+<br>
+<%= link_to "Sign Up Here", '/signup' %>

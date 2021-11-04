@@ -1,0 +1,24 @@
+<%= form_for @plane do |f| %>
+  <%= f.label :make %>
+  <%= f.text_field :make %>
+  <%= f.label :model %>
+  <%= f.text_field :model %>
+  <%= f.label :flight_cycles %>
+  <%= f.text_field :flight_cycles %>
+  <%= f.label :years_old %>
+  <%= f.text_field :years_old %>
+  <br>
+  <br>
+<h4>Add a Fault to the Plane</h4>
+  <%= f.fields_for :faults, Fault.new do |ff| %>
+    <%= ff.label :system_affected %>
+    <%= ff.text_field :system_affected %>
+    <%= ff.label :description %>
+    <%= ff.text_area :description %>
+    <%= ff.label :severity %>
+    <%= ff.text_field :severity %>
+    <%= ff.label_tag(:resolved, "Issue is Resolved") %>
+    <%= check_box_tag(:resolved) %>
+    <%end%>
+  <%= f.button :submit %>
+<% end %>

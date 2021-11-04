@@ -6,6 +6,7 @@ class PlanesController < ApplicationController
 
   def show
     set_plane
+    @fault = @plane.faults.build(mechanic_id: current_user.id)
   end
 
   def new
@@ -13,12 +14,12 @@ class PlanesController < ApplicationController
   end
 
   def create
-
+    plane = Plane.create(plane_params)
+    redirect_to plane_path(plane)
   end
 
-  def destroy
-    set_plane
-    @plane.destroy
+  def edit
+
   end
 
   private
@@ -29,11 +30,11 @@ class PlanesController < ApplicationController
 
     def plane_params
       params.require(:plane).permit(
-        :make
-        :model
-        :years_old
-        :flight_cycles
-        :mechanic_id
+        :make,
+        :model,
+        :years_old,
+        :flight_cycles,
+        :plane_id
       )
     end
 end

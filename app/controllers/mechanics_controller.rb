@@ -1,9 +1,5 @@
 class MechanicsController < ApplicationController
-
-
-  def index
-    @mechanics = Mechanic.all
-  end
+ skip_before_action :verified_user, only: [:new, :create]
 
   def show
     set_mechanic
@@ -18,12 +14,13 @@ class MechanicsController < ApplicationController
   end
 
   def create
-    if (mechanic = Mechanic.create(mechanic_params))
-       session[:user_id] = mechanic.id
-       redirect_to mechanic_path(mechanic)
+    @mechanic = Mechanic.new(mechanic_params)
+    if @mechanic.save
+      session[:user_id] = @mechanic.id
+      redirect_to @mechanic
      else
-      render 'new'
-    end
+       render 'new'
+     end
   end
 
   def update
@@ -42,10 +39,10 @@ class MechanicsController < ApplicationController
 
     def mechanic_params
       params.require(:mechanic).permit(
-        :name
-        :email
-        :password_digest
-        :position
+        :name,
+        :email,
+        :password,
+        :position,
         :years_experience
       )
     end

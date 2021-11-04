@@ -1,0 +1,20 @@
+<h2><%=@mechanic.name%>'s Page</h2>
+<ul>
+  <li> Name: <%=@mechanic.name %></li>
+  <li>Position: <%=@mechanic.position %></li>
+  <li>Years Experience: <%=@mechanic.years_experience %></li>
+    <br>
+</ul>
+<br>
+<h4><%=@mechanic.name%>'s Planes</h4>
+<ul>
+  <%= @mechanic.planes.each do |plane| %>
+  <li><%="#{plane.make} #{plane.model}"%></li>
+  <li><%= link_to "View Plane", plane_path(plane) %></li>
+  <%end%>
+</ul>
+
+
+
+
+<%= link_to "Logout", logout_path, method:"delete"%>

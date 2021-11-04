@@ -1,0 +1,7 @@
+<%= simple_form_for @fault do |f| %>
+  <%= f.input :system_affected %>
+  <%= f.input :severity %>
+  <%= f.input :date %>
+  <%= f.association :plane %>
+  <%= f.button :submit %>
+<% end %>

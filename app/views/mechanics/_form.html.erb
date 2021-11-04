@@ -1,8 +1,8 @@
 <%= simple_form_for @mechanic do |f| %>
-  <%= f.input :name %>
-  <%= f.input :email %>
-  <%= f.input :password %>
-  <%= f.input :position %>
+  <%= f.input :name, error: 'Must provide a name'%>
+  <%= f.input :email, error: 'Must provide an email address' %>
+  <%= f.input :password, error: 'Must create a passoword' %>
+  <%= f.input :position, error: 'Please input your position'%>
   <%= f.input :years_experience %>
   <%= f.button :submit %>
 <% end %>
